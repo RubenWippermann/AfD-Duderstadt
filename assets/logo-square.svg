@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
+<circle cx="256" cy="256" r="205" fill="none" stroke="#009ee0" stroke-width="34"/>
+<path d="M145 270 L185 220 L225 248 L270 190 L310 230 L354 170 L395 225" fill="none" stroke="#ffffff" stroke-width="18" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="256" y="352" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-size="150" font-weight="800" fill="#ffffff">AfD</text>
+<path d="M118 118 L394 394" stroke="#e2001a" stroke-width="42" stroke-linecap="round"/>
+</svg>

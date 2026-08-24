@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Solidarische Designs — afd-duderstadt.de</title>
+<!-- noindex, solange der Shop-Einbau nicht bestätigt live ist (siehe NAHTSTELLE-SHOP-EINBAU.md ③) -->
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" type="image/svg+xml" href="assets/logo-square.svg">
+<link rel="stylesheet" href="assets/site.css">
+<style>
+  main.shop-main { max-width: var(--maxw); margin: 0 auto; padding: 72px 20px 100px; }
+  #pepa-shop { min-height: 240px; }
+  .fallback {
+    background: var(--bg-alt);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-md);
+    padding: 26px;
+    color: var(--sub);
+    font-size: 0.92rem;
+    text-align: center;
+  }
+</style>
+</head>
+<body>
+
+<nav class="topnav">
+  <a href="index.html#gruende">Gründe</a>
+  <a href="index.html#parteien">Demokratische Parteien</a>
+  <a href="index.html#wahl">Kommunalwahl</a>
+  <a href="shop-solidarisch.html" class="active">Shop</a>
+  <a href="index.html#impressum">Impressum</a>
+</nav>
+
+<main class="shop-main">
+  <div class="section-head reveal in" style="margin-bottom:40px;">
+    <span class="kicker">Haltung zeigen</span>
+    <h2>Solidarische Designs</h2>
+    <p>Für alle, die auch außerhalb der Wahlkabine Farbe bekennen wollen.</p>
+  </div>
+
+  <!-- Eingebettetes Shop-Bauteil nach NAHTSTELLE-SHOP-EINBAU.md — unverändert, keine eigenen Produktdaten -->
+  <div id="pepa-shop" data-bereich="solidarisch" data-zurueck="/danke.html">
+    <noscript><p class="fallback">Für den Shop wird JavaScript benötigt.</p></noscript>
+  </div>
+  <p class="fallback" id="lade-hinweis">Shop wird geladen …</p>
+  <script src="https://pp-clothing.wippermann-ruben.workers.dev/shop-einbau.js" defer></script>
+  <script>
+    // Ladehinweis ausblenden, sobald das Bauteil etwas gerendert hat
+    var beobachter = new MutationObserver(function () {
+      var wurzel = document.getElementById('pepa-shop');
+      var hinweis = document.getElementById('lade-hinweis');
+      if (wurzel && wurzel.children.length > 0 && hinweis) { hinweis.remove(); }
+    });
+    var ziel = document.getElementById('pepa-shop');
+    if (ziel) { beobachter.observe(ziel, { childList: true, subtree: true }); }
+  </script>
+</main>
+
+</body>
+</html>
