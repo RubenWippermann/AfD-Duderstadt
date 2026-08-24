@@ -65,6 +65,8 @@ nav.topnav a {
   font-weight: 500;
   letter-spacing: -0.01em;
   opacity: 0.88;
+  white-space: nowrap;
+  flex: 0 0 auto;
 }
 nav.topnav a:hover { opacity: 1; text-decoration: none; color: var(--afd-blue-dark); }
 nav.topnav a.active { color: var(--afd-blue-dark); opacity: 1; }
@@ -284,6 +286,14 @@ footer .fine {
 .reveal.in { opacity: 1; transform: translateY(0); }
 
 @media (max-width: 640px) {
-  nav.topnav { gap: 16px; padding: 0 10px; overflow-x: auto; justify-content: flex-start; }
+  nav.topnav {
+    gap: 18px;
+    padding: 0 16px;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    justify-content: flex-start;
+    scrollbar-width: none;
+  }
+  nav.topnav::-webkit-scrollbar { display: none; }
   main section, main .band, .band-dark { padding: 64px 18px; }
 }
