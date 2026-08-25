@@ -4,7 +4,7 @@
   --font: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", Helvetica, Arial, sans-serif;
   --ink: #1d1d1f;
   --sub: #6e6e73;
-  --sub-2: #86868b;
+  --sub-2: #707070;
   --bg: #ffffff;
   --bg-alt: #f5f5f7;
   --bg-dark: #0b0b0d;
@@ -74,6 +74,8 @@ nav.topnav a {
   opacity: 0.88;
   white-space: nowrap;
   flex: 0 0 auto;
+  padding: 12px 2px;
+  display: inline-block;
 }
 nav.topnav a:hover { opacity: 1; text-decoration: none; color: var(--afd-blue-dark); }
 nav.topnav a.active { color: var(--afd-blue-dark); opacity: 1; }
@@ -81,7 +83,7 @@ nav.topnav a.active { color: var(--afd-blue-dark); opacity: 1; }
 /* ---- Hamburger-Knopf: nur auf schmalen Bildschirmen sichtbar ---- */
 .hamburger {
   display: none;
-  width: 40px; height: 40px;
+  width: 44px; height: 44px;
   margin-left: auto;
   border: none; background: none;
   cursor: pointer;
@@ -123,6 +125,8 @@ nav.topnav a.active { color: var(--afd-blue-dark); opacity: 1; }
   font-size: 1.55rem;
   font-weight: 650;
   letter-spacing: -0.02em;
+  padding: 10px 12px;
+  display: inline-block;
 }
 .mobile-menu a.active { color: var(--afd-blue-dark); }
 .mobile-menu a.mm-impressum {
@@ -188,7 +192,7 @@ header.hero .cta-row {
   transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
 }
 .pill:hover { text-decoration: none; transform: translateY(-1px); }
-.pill.primary { background: var(--afd-blue); color: #fff; }
+.pill.primary { background: var(--afd-blue-dark); color: #fff; }
 .pill.primary:hover { background: var(--afd-blue-dark); box-shadow: 0 8px 20px rgba(0,158,224,0.28); }
 .pill.secondary { background: rgba(0,0,0,0.05); color: var(--ink); }
 .pill.secondary:hover { background: rgba(0,0,0,0.08); }
@@ -239,7 +243,7 @@ main section:nth-of-type(even) { background: var(--bg-alt); }
 .reason-num {
   width: 44px; height: 44px;
   border-radius: 50%;
-  background: var(--afd-blue);
+  background: var(--afd-blue-dark);
   color: #fff;
   font-weight: 700;
   font-size: 1.05rem;
@@ -271,6 +275,8 @@ main section:nth-of-type(even) { background: var(--bg-alt); }
   color: var(--afd-blue-dark);
   font-weight: 600;
   font-size: 0.92rem;
+  padding: 6px 0;
+  margin: -6px 0;
 }
 .party-card a.btn:after { content: " →"; }
 
@@ -305,7 +311,7 @@ main section:nth-of-type(even) { background: var(--bg-alt); }
   letter-spacing: 0.04em;
 }
 .band-dark .link-row { margin-top: 44px; }
-.band-dark a.pill.primary { background: var(--afd-blue); }
+.band-dark a.pill.primary { background: var(--afd-blue-dark); }
 
 /* ---- Shop CTA ---- */
 .shop-box {
@@ -377,7 +383,8 @@ footer.site-footer .foot-col h4 {
   text-transform: uppercase; letter-spacing: 0.04em; color: var(--sub-2);
 }
 footer.site-footer .foot-col a {
-  display: block; margin-bottom: 10px;
+  display: block; margin-bottom: 2px;
+  padding: 8px 0;
   font-size: 0.92rem; color: var(--ink); font-weight: 500;
 }
 footer.site-footer .foot-col a:hover { color: var(--afd-blue-dark); text-decoration: none; }
