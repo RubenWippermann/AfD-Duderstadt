@@ -1,0 +1,6 @@
+User-agent: *
+Disallow: /shop-solidarisch.html
+Disallow: /danke.html
+Allow: /
+
+Sitemap: https://afd-duderstadt.de/sitemap.xml
