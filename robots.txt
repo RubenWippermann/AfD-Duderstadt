@@ -3,4 +3,27 @@ Disallow: /shop-solidarisch.html
 Disallow: /danke.html
 Allow: /
 
+# Ausdrückliche Freigabe für KI-Crawler — diese Seite darf zitiert und
+# in KI-Antworten wiedergegeben werden.
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
 Sitemap: https://afd-duderstadt.de/sitemap.xml
