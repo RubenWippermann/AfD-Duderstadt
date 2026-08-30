@@ -223,7 +223,7 @@ header.hero .cta-row {
 main section, main .band {
   padding: 96px 20px;
 }
-main section:nth-of-type(even) { background: var(--bg-alt); }
+main section.tinted { background: var(--bg-alt); }
 .wrap { max-width: var(--maxw); margin: 0 auto; }
 .wrap-wide { max-width: var(--maxw-wide); margin: 0 auto; }
 
@@ -305,6 +305,27 @@ main section:nth-of-type(even) { background: var(--bg-alt); }
   margin: -6px 0;
 }
 .party-card a.btn:after { content: " →"; }
+
+/* Reine Fakten-/Ergebnis-Kacheln ohne Handlung: kein Hover-Lift, kein "klickbar" vortäuschen */
+.party-card.static { cursor: default; }
+.party-card.static:hover { transform: none; box-shadow: 0 1px 2px rgba(0,0,0,0.03); border-color: var(--line); }
+.party-card .result-value { font-size: 1.4rem; font-weight: 650; color: var(--ink); font-variant-numeric: tabular-nums; letter-spacing: -0.01em; }
+.party-card .result-label { margin-top: 4px; font-size: 0.85rem; color: var(--sub); }
+
+/* Ortsteil-/Namensliste: eigene kompakte Kachel statt party-card mit inline-Padding */
+.place-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 10px;
+}
+.place-chip {
+  padding: 14px 18px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius-md);
+  font-size: 0.95rem;
+  font-weight: 550;
+  background: #fff;
+}
 
 /* ---- Kommunalwahl: dunkles Band ---- */
 .band-dark {
