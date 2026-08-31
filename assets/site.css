@@ -443,7 +443,7 @@ footer.site-footer .foot-bottom {
   display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px;
   font-size: 0.78rem; color: var(--sub-2);
 }
-footer.site-footer .foot-bottom a { color: var(--sub-2); }
+footer.site-footer .foot-bottom a { color: var(--sub-2); display: inline-block; padding: 4px 0; }
 footer.site-footer .foot-bottom a:hover { color: var(--afd-blue-dark); }
 @media (max-width: 720px) {
   footer.site-footer .foot-grid { grid-template-columns: 1fr; gap: 32px; }
