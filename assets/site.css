@@ -423,7 +423,7 @@ footer.site-footer .foot-grid {
   grid-template-columns: 1.3fr 1fr 1fr;
   gap: 40px;
 }
-footer.site-footer .foot-brand img { width: auto; height: 46px; margin-bottom: 14px; }
+footer.site-footer .foot-brand img { width: auto; height: 68px; margin-bottom: 14px; max-width: 100%; }
 footer.site-footer .foot-brand p {
   font-size: 0.86rem; line-height: 1.6; color: var(--sub); max-width: 320px; margin: 0;
 }
