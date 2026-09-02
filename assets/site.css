@@ -181,7 +181,7 @@ header.hero {
   background: linear-gradient(180deg, #ffffff 0%, #f7fbfd 60%, #eef8fc 100%);
 }
 header.hero .inner { max-width: 840px; margin: 0 auto; }
-header.hero img.logo { height: 108px; margin: 0 auto 36px; }
+header.hero img.logo { width: auto; height: 108px; margin: 0 auto 36px; }
 header.hero h1 {
   margin: 0 0 20px;
   font-size: clamp(2.6rem, 6.4vw, 5rem);
@@ -423,7 +423,7 @@ footer.site-footer .foot-grid {
   grid-template-columns: 1.3fr 1fr 1fr;
   gap: 40px;
 }
-footer.site-footer .foot-brand img { height: 46px; margin-bottom: 14px; }
+footer.site-footer .foot-brand img { width: auto; height: 46px; margin-bottom: 14px; }
 footer.site-footer .foot-brand p {
   font-size: 0.86rem; line-height: 1.6; color: var(--sub); max-width: 320px; margin: 0;
 }
