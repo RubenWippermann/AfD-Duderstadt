@@ -22,7 +22,12 @@
 <link rel="stylesheet" href="assets/site.css">
 <style>
   main.shop-main { max-width: var(--maxw); margin: 0 auto; padding: 72px 20px 100px; }
-  #pepa-shop { min-height: 240px; }
+  #pepa-shop {
+    min-height: 240px;
+    width: 100vw;
+    margin-left: calc(50% - 50vw);
+    margin-right: calc(50% - 50vw);
+  }
   .fallback {
     background: var(--bg-alt);
     border: 1px solid var(--line);
