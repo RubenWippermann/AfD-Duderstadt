@@ -12,7 +12,7 @@
      Wird erst auf true gesetzt, wenn die rechtliche Prüfung für diese politische Domain
      abgeschlossen ist (Jurist-Session, Stand 15.09.: noch offen). Muster wie
      erstehilfekurse.online. */
-  var AD_NETWORK_AKTIV = false;
+  var AD_NETWORK_AKTIV = true;
 
   function get() {
     try { return localStorage.getItem(KEY); } catch (e) {}
