@@ -450,6 +450,7 @@ footer.site-footer .foot-bottom a:hover { color: var(--afd-blue-dark); }
   padding: 20px; display: flex; flex-wrap: wrap; align-items: center;
   justify-content: center; gap: 16px 24px;
 }
+.cc-banner[hidden] { display: none; }
 .cc-banner p {
   margin: 0; font-size: 0.85rem; line-height: 1.6; color: var(--sub);
   max-width: 560px; flex: 1 1 320px;
