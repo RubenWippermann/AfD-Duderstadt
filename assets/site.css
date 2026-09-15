@@ -442,6 +442,42 @@ footer.site-footer .foot-bottom a:hover { color: var(--afd-blue-dark); }
   font-size: 0.78rem; color: var(--sub-2);
 }
 
+/* ---- Cookie-Consent-Banner ---- */
+.cc-banner {
+  position: fixed; left: 0; right: 0; bottom: 0; z-index: 500;
+  background: #fff; border-top: 1px solid var(--line);
+  box-shadow: 0 -8px 32px rgba(0,0,0,0.08);
+  padding: 20px; display: flex; flex-wrap: wrap; align-items: center;
+  justify-content: center; gap: 16px 24px;
+}
+.cc-banner p {
+  margin: 0; font-size: 0.85rem; line-height: 1.6; color: var(--sub);
+  max-width: 560px; flex: 1 1 320px;
+}
+.cc-banner p a { color: var(--afd-blue-dark); text-decoration: underline; }
+.cc-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+.cc-actions button {
+  border: none; border-radius: var(--radius-md); padding: 10px 20px;
+  font-size: 0.85rem; font-weight: 600; cursor: pointer;
+  transition: background 0.2s var(--ease), transform 0.2s var(--ease);
+}
+.cc-actions button:active { transform: scale(0.97); }
+.cc-actions [data-cc="accept"] { background: var(--afd-blue-dark); color: #fff; }
+.cc-actions [data-cc="accept"]:hover { background: var(--afd-blue); }
+.cc-actions [data-cc="reject"] { background: var(--bg-alt); color: var(--ink); }
+.cc-actions [data-cc="reject"]:hover { background: var(--line); }
+
+/* ---- Anzeigenblock (nur nach Marketing-Einwilligung sichtbar) ---- */
+.ad-slot {
+  max-width: var(--maxw); margin: 0 auto; padding: 0 20px 40px;
+  opacity: 0; height: 0; overflow: hidden; transition: opacity 0.3s var(--ease);
+}
+.ad-slot.consented { opacity: 1; height: auto; overflow: visible; }
+.ad-slot .ad-label {
+  display: block; font-size: 0.7rem; letter-spacing: 0.04em; text-transform: uppercase;
+  color: var(--sub-2); margin-bottom: 6px; text-align: center;
+}
+
 /* ---- Scroll-Reveal ---- */
 .reveal { opacity: 0; transform: translateY(18px); transition: opacity 0.6s var(--ease), transform 0.6s var(--ease); }
 .reveal.in { opacity: 1; transform: translateY(0); }
