@@ -329,39 +329,6 @@ main section.tinted { background: var(--bg-alt); }
   overflow-wrap: break-word;
 }
 
-/* ---- Kommunalwahl: dunkles Band ---- */
-.band-dark {
-  background: radial-gradient(circle at 30% 20%, #14202a 0%, var(--bg-dark) 65%);
-  color: #fff;
-  padding: 100px 20px;
-  text-align: center;
-}
-.band-dark .kicker { color: #6fd3ff; }
-.band-dark h2 { color: #fff; }
-.band-dark p.lead { color: rgba(255,255,255,0.72); font-size: 1.15rem; max-width: 600px; margin: 0 auto 44px; }
-.stat-row {
-  display: flex;
-  justify-content: center;
-  gap: 60px;
-  flex-wrap: wrap;
-}
-.stat { text-align: center; }
-.stat .big {
-  font-size: clamp(2rem, 5vw, 3.2rem);
-  font-weight: 650;
-  letter-spacing: -0.02em;
-  color: #fff;
-}
-.stat .label {
-  margin-top: 6px;
-  font-size: 0.85rem;
-  color: rgba(255,255,255,0.55);
-  text-transform: uppercase;
-  letter-spacing: 0.04em;
-}
-.band-dark .link-row { margin-top: 44px; }
-.band-dark a.pill.primary { background: var(--afd-blue-dark); }
-
 /* ---- Shop CTA ---- */
 .shop-box {
   background: linear-gradient(135deg, #eaf8ff, #ffffff);
