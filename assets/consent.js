@@ -7,6 +7,13 @@
   var KEY = 'afd-consent';          // 'accept' | 'reject'
   var MAXAGE = 60 * 60 * 24 * 365;  // 12 Monate
 
+  /* AD_NETWORK_AKTIV: harter Schalter, unabhängig vom Consent-Status. Solange false,
+     lädt das AdSense-SDK NIE, egal was der Besucher wählt — auch bei "Werbung erlauben".
+     Wird erst auf true gesetzt, wenn die rechtliche Prüfung für diese politische Domain
+     abgeschlossen ist (Jurist-Session, Stand 15.09.: noch offen). Muster wie
+     erstehilfekurse.online. */
+  var AD_NETWORK_AKTIV = false;
+
   function get() {
     try { return localStorage.getItem(KEY); } catch (e) {}
     var m = /(?:^|;\s*)afd_consent=([^;]+)/.exec(document.cookie);
@@ -30,7 +37,7 @@
     Array.prototype.forEach.call(slots, function (el) {
       el.classList.add('consented');
     });
-    if (slots.length && !document.querySelector('script[data-adsense-sdk]')) {
+    if (AD_NETWORK_AKTIV && slots.length && !document.querySelector('script[data-adsense-sdk]')) {
       var ins = document.querySelector('ins.adsbygoogle[data-ad-client]');
       var client = ins && ins.getAttribute('data-ad-client');
       if (client) {
