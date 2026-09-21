@@ -489,3 +489,6 @@ footer.site-footer .foot-bottom a:hover { color: var(--afd-blue-dark); }
 @media (max-width: 640px) {
   main section, main .band, .band-dark { padding: 64px 18px; }
 }
+
+.skip-link { position: absolute; left: 8px; top: -60px; z-index: 1000; background: var(--ink); color: #fff; padding: 10px 16px; border-radius: 8px; text-decoration: none; }
+.skip-link:focus { top: 8px; }
