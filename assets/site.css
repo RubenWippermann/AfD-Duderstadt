@@ -474,6 +474,9 @@ footer.site-footer .foot-bottom a:hover { color: var(--afd-blue-dark); }
   opacity: 0; height: 0; overflow: hidden; transition: opacity 0.3s var(--ease);
 }
 .ad-slot.consented { opacity: 1; height: auto; overflow: visible; }
+.ad-slot ins.adsbygoogle { max-height: 360px; overflow: hidden; }
+.ad-slot ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
+.ad-slot:has(ins.adsbygoogle[data-ad-status="unfilled"]) { display: none; }
 .ad-slot .ad-label {
   display: block; font-size: 0.7rem; letter-spacing: 0.04em; text-transform: uppercase;
   color: var(--sub-2); margin-bottom: 6px; text-align: center;
