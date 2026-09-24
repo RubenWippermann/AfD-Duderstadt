@@ -30,6 +30,48 @@
     margin-left: calc(50% - 50vw);
     margin-right: calc(50% - 50vw);
   }
+  /* Filterleiste des eingebetteten Shop-Bauteils (nur Darstellung, nur diese Seite).
+     Das Bauteil hängt Auswahlfelder und Sortierknöpfe als lose Geschwister an #pepa-shop;
+     :has() beschränkt das Ganze auf die Listenansicht, die Detailansicht bleibt unverändert. */
+  #pepa-shop:has(> .pepa-wahl-auswahl) {
+    --shop-pad: max(20px, calc((100vw - var(--maxw)) / 2));
+    display: flex; flex-wrap: wrap; justify-content: center; align-items: stretch;
+    gap: 12px; padding: 0 var(--shop-pad);
+  }
+  #pepa-shop:has(> .pepa-wahl-auswahl) > * { flex: 0 0 100%; margin: 0; min-width: 0; }
+  #pepa-shop:has(> .pepa-wahl-auswahl) > .pepa-liste {
+    flex: 0 0 calc(100% + 2 * var(--shop-pad)); margin: 8px calc(-1 * var(--shop-pad)) 0;
+  }
+  #pepa-shop > .pepa-wahl-auswahl { flex: 1 1 150px; max-width: 236px; margin: 0; }
+  #pepa-shop .pepa-auswahl {
+    appearance: none; -webkit-appearance: none; width: 100%; height: 46px; box-sizing: border-box;
+    padding: 0 42px 0 16px; border: 1px solid rgba(0,0,0,.14); border-radius: var(--radius-md);
+    background: #fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='9' viewBox='0 0 14 9' fill='none' stroke='%231d1d1f' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M1.5 1.5 7 7l5.5-5.5'/%3E%3C/svg%3E") no-repeat right 16px center;
+    color: var(--ink); font: inherit; font-size: .95rem; cursor: pointer; text-overflow: ellipsis;
+    transition: border-color .15s, box-shadow .15s;
+  }
+  #pepa-shop .pepa-auswahl:hover { border-color: rgba(0,0,0,.32); }
+  #pepa-shop .pepa-auswahl:focus-visible { outline: none; border-color: var(--afd-blue); box-shadow: 0 0 0 3px rgba(0,158,224,.25); }
+  #pepa-shop > .pepa-wahl {
+    flex: 0 0 auto; align-self: center; display: inline-flex; gap: 2px; padding: 3px; margin: 4px 0 8px;
+    background: var(--bg-alt); border: 1px solid var(--line); border-radius: var(--radius-md);
+  }
+  #pepa-shop > .pepa-wahl > .pepa-knopf {
+    height: 38px; padding: 0 16px; border: 0; border-radius: 11px; background: transparent;
+    color: var(--sub); font: inherit; font-size: .92rem; font-weight: 500; white-space: nowrap; cursor: pointer;
+    transition: background .15s, color .15s, box-shadow .15s;
+  }
+  #pepa-shop > .pepa-wahl > .pepa-knopf:hover { color: var(--ink); }
+  #pepa-shop > .pepa-wahl > .pepa-knopf[aria-pressed="true"] {
+    background: #fff; color: var(--afd-blue-dark); font-weight: 600; box-shadow: 0 1px 3px rgba(0,0,0,.14);
+  }
+  #pepa-shop > .pepa-wahl > .pepa-knopf:focus-visible { outline: 2px solid var(--afd-blue); outline-offset: 1px; }
+  @media (max-width: 700px) {
+    #pepa-shop > .pepa-wahl-auswahl { flex: 1 1 calc(50% - 6px); max-width: none; }
+    #pepa-shop .pepa-auswahl { padding: 0 34px 0 14px; font-size: .9rem; background-position: right 13px center; }
+    #pepa-shop:has(> .pepa-wahl-auswahl) > .pepa-wahl { flex: 0 0 100%; display: grid; grid-template-columns: 1fr 1fr; }
+    #pepa-shop > .pepa-wahl > .pepa-knopf { padding: 0 8px; }
+  }
   .fallback {
     background: var(--bg-alt);
     border: 1px solid var(--line);
