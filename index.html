@@ -3,6 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
 <title>afd-duderstadt.de — Diese Seite gehört NICHT der AfD</title>
 <meta name="description" content="Private Website gegen die AfD in Duderstadt: zehn belegte Gründe, demokratische Parteien vor Ort und was du gegen die AfD tun kannst.">
 <meta name="robots" content="index, follow">
@@ -37,11 +40,11 @@
 <body>
 <a class="skip-link" href="#main">Zum Inhalt springen</a>
 
-<div class="disclaimer">
+<aside class="disclaimer" aria-label="Hinweis zur Herkunft der Website">
   <p><strong>Hinweis:</strong> Diese Website wird nicht von der AfD betrieben oder verantwortet.</p>
-</div>
+</aside>
 
-<nav class="topnav">
+<nav class="topnav" aria-label="Hauptnavigation">
   <div class="nav-links">
     <a href="index.html" class="active">Start</a>
     <a href="gruende.html">Gründe</a>
@@ -53,7 +56,7 @@
   </button>
 </nav>
 
-<div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+<div class="mobile-menu" id="mobileMenu" aria-hidden="true" inert>
   <button class="mobile-menu-close" id="mobileMenuClose" aria-label="Menü schließen">✕</button>
   <a href="index.html" class="active">Start</a>
   <a href="gruende.html">Gründe</a>
@@ -239,14 +242,14 @@
       <p>Diese Website wird von einer Privatperson betrieben — kein Zusammenhang mit der AfD.</p>
     </div>
     <div class="foot-col">
-      <h4>Seiten</h4>
+      <h2 class="foot-title">Seiten</h2>
       <a href="index.html">Start</a>
       <a href="gruende.html">Gründe</a>
       <a href="parteien.html">Demokratische Parteien</a>
       <a href="shop-solidarisch.html">Shop</a>
     </div>
     <div class="foot-col">
-      <h4>Rechtliches</h4>
+      <h2 class="foot-title">Rechtliches</h2>
       <a href="impressum.html">Impressum</a>
       <a href="impressum.html#datenschutz">Datenschutz</a>
       <a href="#" data-cookie-settings>Cookie-Einstellungen</a>
@@ -278,7 +281,7 @@
 </script>
 
 
-<div class="cc-banner" data-cc-banner hidden>
+<div class="cc-banner" data-cc-banner role="region" aria-label="Cookie-Hinweis" hidden>
   <p>Diese Website nutzt nur mit deiner Einwilligung ein Werbenetzwerk (Google AdSense), das Cookies setzt.
     Ohne Einwilligung läuft die Seite komplett ohne Werbung und ohne diese Cookies weiter.
     <a href="impressum.html#datenschutz">Mehr in der Datenschutzerklärung</a>.</p>

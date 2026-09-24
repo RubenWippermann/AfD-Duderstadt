@@ -3,6 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
 <title>Danke — afd-duderstadt.de</title>
 <meta name="robots" content="noindex, nofollow">
 <meta name="referrer" content="strict-origin-when-cross-origin">
@@ -27,11 +30,12 @@
   .thanks .box { max-width: 460px; }
   .thanks h1 { font-size: clamp(1.8rem, 4vw, 2.4rem); font-weight: 650; letter-spacing: -0.02em; margin-bottom: 12px; }
   .thanks p { color: var(--sub); font-size: 1.05rem; }
-  .thanks .cta { display: inline-block; padding: 6px 0; }
+  .thanks .cta { display: inline-block; padding: 12px 0; }
 </style>
 </head>
 <body>
-  <nav class="topnav">
+  <a class="skip-link" href="#main">Zum Inhalt springen</a>
+  <nav class="topnav" aria-label="Hauptnavigation">
     <div class="nav-links">
       <a href="index.html">Start</a>
       <a href="gruende.html">Gründe</a>
@@ -43,7 +47,7 @@
     </button>
   </nav>
 
-  <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+  <div class="mobile-menu" id="mobileMenu" aria-hidden="true" inert>
     <button class="mobile-menu-close" id="mobileMenuClose" aria-label="Menü schließen">✕</button>
     <a href="index.html">Start</a>
     <a href="gruende.html">Gründe</a>
@@ -52,13 +56,13 @@
     <a href="impressum.html" class="mm-impressum">Impressum</a>
   </div>
   <script src="assets/nav.js" defer></script>
-  <div class="thanks">
+  <main id="main" class="thanks">
     <div class="box">
       <h1>Danke für deine Bestellung.</h1>
       <p>Verkauf und Versand übernimmt Personal Paramedic e.K.</p>
       <p style="margin-top:24px;"><a class="cta" href="index.html">Zurück zu afd-duderstadt.de</a></p>
     </div>
-  </div>
+  </main>
   <footer class="site-footer">
     <div class="foot-grid">
       <div class="foot-brand">
@@ -66,14 +70,14 @@
         <p>Diese Website wird von einer Privatperson betrieben — kein Zusammenhang mit der AfD.</p>
       </div>
       <div class="foot-col">
-        <h4>Seiten</h4>
+        <h2 class="foot-title">Seiten</h2>
         <a href="index.html">Start</a>
         <a href="gruende.html">Gründe</a>
         <a href="parteien.html">Demokratische Parteien</a>
         <a href="shop-solidarisch.html">Shop</a>
       </div>
       <div class="foot-col">
-        <h4>Rechtliches</h4>
+        <h2 class="foot-title">Rechtliches</h2>
         <a href="impressum.html">Impressum</a>
         <a href="impressum.html#datenschutz">Datenschutz</a>
       <a href="#" data-cookie-settings>Cookie-Einstellungen</a>
@@ -87,7 +91,7 @@
     </div>
   </footer>
 
-<div class="cc-banner" data-cc-banner hidden>
+<div class="cc-banner" data-cc-banner role="region" aria-label="Cookie-Hinweis" hidden>
   <p>Diese Website nutzt nur mit deiner Einwilligung ein Werbenetzwerk (Google AdSense), das Cookies setzt.
     Ohne Einwilligung läuft die Seite komplett ohne Werbung und ohne diese Cookies weiter.
     <a href="impressum.html#datenschutz">Mehr in der Datenschutzerklärung</a>.</p>

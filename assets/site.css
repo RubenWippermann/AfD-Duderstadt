@@ -275,7 +275,7 @@ main section.tinted { background: var(--bg-alt); }
   transition: background 0.28s var(--ease), color 0.28s var(--ease);
 }
 .reason-row:hover .reason-num { background: var(--afd-blue-dark); color: #fff; }
-.reason-row h3 { margin: 4px 0 8px; font-size: 1.25rem; font-weight: 600; letter-spacing: -0.01em; }
+.reason-row h3, .reason-row h2 { margin: 4px 0 8px; font-size: 1.25rem; font-weight: 600; letter-spacing: -0.01em; }
 .reason-row p { margin: 0; color: var(--sub); font-size: 1.02rem; }
 .reason-row .src { display: block; margin-top: 10px; font-size: 0.8rem; color: var(--sub-2); font-style: italic; }
 
@@ -294,7 +294,7 @@ main section.tinted { background: var(--bg-alt); }
   transition: transform 0.28s var(--ease), box-shadow 0.28s var(--ease), border-color 0.28s var(--ease);
 }
 .party-card:hover { transform: translateY(-4px); box-shadow: 0 20px 40px rgba(0,0,0,0.1); border-color: rgba(0,158,224,0.25); }
-.party-card h3 { margin: 0 0 6px; font-size: 1.15rem; font-weight: 600; }
+.party-card h3, .party-card h2 { margin: 0 0 6px; font-size: 1.15rem; font-weight: 600; }
 .party-card p { margin: 0 0 16px; font-size: 0.92rem; color: var(--sub); }
 .party-card a.btn {
   display: inline-block;
@@ -394,7 +394,7 @@ footer.site-footer .foot-brand img { width: auto; height: 68px; margin-bottom: 1
 footer.site-footer .foot-brand p {
   font-size: 0.86rem; line-height: 1.6; color: var(--sub); max-width: 320px; margin: 0;
 }
-footer.site-footer .foot-col h4 {
+footer.site-footer .foot-col h4, footer.site-footer .foot-col h2.foot-title {
   margin: 0 0 14px; font-size: 0.78rem; font-weight: 650;
   text-transform: uppercase; letter-spacing: 0.04em; color: var(--sub-2);
 }
@@ -492,3 +492,45 @@ footer.site-footer .foot-bottom a:hover { color: var(--afd-blue-dark); }
 
 .skip-link { position: absolute; left: 8px; top: -60px; z-index: 1000; background: var(--ink); color: #fff; padding: 10px 16px; border-radius: 8px; text-decoration: none; }
 .skip-link:focus { top: 8px; }
+
+/* ---- Barrierefreiheit / Bedienung (apple-design-Durchgang 25.09.) ---- */
+.mobile-menu a { min-height: 48px; display: flex; align-items: center; justify-content: center; }
+.legal-page p a, .legal-page li a { text-decoration: underline; text-underline-offset: 2px; }
+:root { color-scheme: light dark; }
+
+/* ---- Dunkelmodus: dieselben Rollen, andere Werte (Farben nie hart im Bauteil, sondern über Variablen) ---- */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --ink: #f5f5f7;
+    --sub: #a1a1a6;
+    --sub-2: #a1a1a6;
+    --bg: #000000;
+    --bg-alt: #1c1c1e;
+    --bg-dark: #000000;
+    --line: rgba(255,255,255,0.16);
+    --afd-blue: #2fb0ee;
+    --afd-blue-dark: #4cb8ea;
+    --alarm-red: #ff453a;
+  }
+  nav.topnav { background: rgba(0,0,0,0.72); }
+  .mobile-menu { background: rgba(0,0,0,0.98); }
+  header.hero { background: linear-gradient(180deg, #000000 0%, #06131a 60%, #0a1e29 100%); }
+  .pill.primary, .cc-actions [data-cc="accept"] { background: #0077a8; color: #fff; }
+  .reason-row:hover .reason-num { background: #0077a8; color: #fff; }
+  .party-card, .place-chip, .teaser-card, .cc-banner { background: var(--bg-alt); }
+  .shop-box .placeholder-note { background: #2b2410; border-color: #a68400; }
+  .shop-box { background: linear-gradient(135deg, #0a1e29, #000000); }
+  .skip-link { background: #f5f5f7; color: #000; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+}
+@media (max-width: 640px) {
+  footer.site-footer .foot-col a { padding: 13px 0; }
+  footer.site-footer .foot-bottom a { display: inline-block; padding: 12px 0; }
+  .cc-actions button { min-height: 44px; }
+  .cc-banner p a { display: inline-block; padding: 10px 0; }
+  .party-card a.btn { min-height: 44px; display: inline-flex; align-items: center; }
+}
