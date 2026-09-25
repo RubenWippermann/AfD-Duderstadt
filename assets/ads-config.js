@@ -7,7 +7,7 @@
                 Ungültige Werte ("PLATZHALTER") schalten den Platz stumm: keine Anfrage an Google, keine Lücke.
    CONSENT_TAG  Der Tag der Google-Einwilligungsmeldung "Einwilligung afd-duderstadt.de"
                 (AdSense > Datenschutz & Mitteilungen > Meldung > Tag). Den <script>-Tag unverändert
-                zwischen die Anführungszeichen kopieren.
+                zwischen die beiden Rückwärts-Apostrophe (` `) kopieren; mehrere Zeilen sind erlaubt.
                 LEER  = kein Google-Skript; nur das eigene Cookie-Banner, Werbung erst nach "Werbung erlauben".
                 GESETZT = Googles Meldung übernimmt die Einwilligung; Werbung erst nach Einwilligung
                 (TCF v2.2: Zweck 1 und Anbieter Google, ID 755). Das eigene Banner erscheint nur als
@@ -17,7 +17,7 @@
 window.AFD_ADS = {
   CLIENT: 'ca-pub-9559534862346377',
   SLOTS: { oben: '7484974390', unten: 'PLATZHALTER' },
-  CONSENT_TAG: '',
+  CONSENT_TAG: ``,
   ERLAUBTE_HOSTS: ['fundingchoicesmessages.google.com', 'fundingchoices.google.com',
                    'pagead2.googlesyndication.com', 'www.googletagservices.com']
 };
