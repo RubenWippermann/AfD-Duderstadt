@@ -1,0 +1,10 @@
+# afd-duderstadt.de
+
+> Private Website (kein Angebot und kein Zusammenhang mit der AfD) zur AfD und zur demokratischen Kommunalpolitik in Duderstadt, mit Quellenangaben.
+
+## Seiten
+- [Startseite](https://afd-duderstadt.de/): Überblick, lokaler Bezug (Stadtratswahl 2021, Wahlvorschläge 2026)
+- [Zehn Gründe gegen die AfD](https://afd-duderstadt.de/gruende.html): zehn Punkte, jeweils mit Quelle
+- [Demokratische Parteien in Duderstadt](https://afd-duderstadt.de/parteien.html): Parteien mit Links zu deren Websites
+- [Solidarische Designs](https://afd-duderstadt.de/shop-solidarisch.html): Shop
+- [Impressum](https://afd-duderstadt.de/impressum.html): Betreiberangaben, Datenschutz, AGB und Widerruf (Shop)
