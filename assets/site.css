@@ -489,6 +489,7 @@ html[data-ads-unten] .ad-slot[data-ad-position="unten"]:not(:has(ins)) { min-hei
 
 /* Absatz zur Google-Einwilligungsmeldung (Datenschutzerklärung): nur sichtbar, wenn ads-config.js CONSENT_TAG gesetzt ist */
 html[data-cmp="google"] .nur-google-cmp[hidden] { display: block; }
+html[data-cmp="google"] .nur-eigen { display: none; }
 
 /* ---- Scroll-Reveal ---- */
 .reveal { opacity: 0; transform: translateY(18px); transition: opacity 0.6s var(--ease), transform 0.6s var(--ease); }
