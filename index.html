@@ -82,6 +82,7 @@
   ]
 }
 </script>
+<link rel="preload" as="image" href="media/hero-afd-poster.jpg" imagesrcset="media/hero-afd-poster-960.jpg 960w, media/hero-afd-poster.jpg 1920w" imagesizes="100vw" fetchpriority="high">
 <script src="assets/ads-config.js"></script>
 </head>
 <body>
@@ -114,13 +115,15 @@
 <script src="assets/nav.js" defer></script>
 
 <header class="hero">
+  <div class="hero-media" aria-hidden="true">
+    <img src="media/hero-afd-poster.jpg" srcset="media/hero-afd-poster-960.jpg 960w, media/hero-afd-poster.jpg 1920w" sizes="100vw" alt="" width="1920" height="1080" fetchpriority="high" decoding="async">
+    <video class="hero-video" data-src="media/hero-afd.mp4" poster="media/hero-afd-poster.jpg" muted loop playsinline preload="none" tabindex="-1"></video>
+  </div>
   <div class="inner">
-    <img class="logo" src="assets/logo-header.png" alt="afd✕duderstadt Logo" width="482" height="260">
     <h1><span class="sr-only">AfD in Duderstadt: </span>afd<span class="x" aria-hidden="true">✕</span>duderstadt<br>nicht mit uns.</h1>
     <p class="sub">Klare Kante gegen die AfD — für eine starke demokratische Kommunalpolitik in Duderstadt.</p>
     <div class="cta-row">
       <a class="pill primary" href="gruende.html">Zehn Gründe gegen die AfD</a>
-      <a class="pill secondary" href="parteien.html">Demokratische Alternativen</a>
     </div>
   </div>
 </header>
@@ -161,22 +164,31 @@
       </div>
       <div class="teaser-grid reveal">
         <a class="teaser-card" href="gruende.html">
+          <img class="teaser-img" src="media/card-gruende.svg" alt="" width="400" height="240" loading="lazy" decoding="async">
+          <div class="teaser-body">
           <span class="kicker">Fakten, keine Stimmung</span>
           <h3>Warum die AfD keine Stimme verdient</h3>
           <p>Zehn Gründe, jeweils mit Quelle — nachprüfbar, nicht behauptet.</p>
           <span class="teaser-link">Alle zehn Gründe mit Quellen lesen →</span>
+        </div>
         </a>
         <a class="teaser-card" href="parteien.html">
+          <img class="teaser-img" src="media/card-parteien.svg" alt="" width="400" height="240" loading="lazy" decoding="async">
+          <div class="teaser-body">
           <span class="kicker">Direkt vor Ort</span>
           <h3>Wählt demokratisch</h3>
           <p>Die demokratischen Parteien in Duderstadt — mit direktem Link zur Website.</p>
           <span class="teaser-link">Demokratische Parteien in Duderstadt ansehen →</span>
+        </div>
         </a>
         <a class="teaser-card" href="shop-solidarisch.html">
+          <img class="teaser-img" src="media/card-shop.svg" alt="" width="400" height="240" loading="lazy" decoding="async">
+          <div class="teaser-body">
           <span class="kicker">Haltung zeigen</span>
           <h3>Solidarische Designs</h3>
           <p>Für alle, die auch außerhalb der Wahlkabine Farbe bekennen wollen.</p>
           <span class="teaser-link">Solidarische Designs im Shop ansehen →</span>
+        </div>
         </a>
       </div>
     </div>
@@ -336,22 +348,7 @@
   </div>
 </footer>
 
-<script>
-  var reveals = document.querySelectorAll('.reveal');
-  if ('IntersectionObserver' in window) {
-    var io = new IntersectionObserver(function (entries) {
-      entries.forEach(function (e) {
-        if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
-      });
-    }, { threshold: 0.12 });
-    reveals.forEach(function (el) { io.observe(el); });
-    // Sicherheitsnetz: falls der Observer aus irgendeinem Grund nicht feuert
-    // (z. B. reduzierte Bewegung, ungewöhnliches Rendering), Inhalt nie dauerhaft unsichtbar lassen.
-    setTimeout(function () { reveals.forEach(function (el) { el.classList.add('in'); }); }, 1200);
-  } else {
-    reveals.forEach(function (el) { el.classList.add('in'); });
-  }
-</script>
+
 
 
 <div class="cc-banner" data-cc-banner role="region" aria-label="Cookie-Hinweis" hidden>
@@ -363,6 +360,8 @@
     <button type="button" data-cc="accept">Werbung erlauben</button>
   </div>
 </div>
+<script src="assets/hero-config.js"></script>
+<script src="assets/site.js" defer></script>
 <script src="assets/consent.js" defer></script>
 </body>
 </html>

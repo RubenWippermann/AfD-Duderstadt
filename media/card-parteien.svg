@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 240" width="400" height="240" role="img" aria-hidden="true" focusable="false">
+<style>
+:root{--a:#0077a8;--b:#009ee0;--bg1:#eaf6fc;--bg2:#ffffff;--ln:#0077a8;--fill:#ffffff;--soft:#cfe9f6}
+@media (prefers-color-scheme: dark){:root{--a:#4cb8ea;--b:#2fb0ee;--bg1:#0a1e29;--bg2:#101418;--ln:#4cb8ea;--fill:#16222b;--soft:#1d3a4a}}
+</style>
+<defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="var(--bg1)"/><stop offset="1" stop-color="var(--bg2)"/></linearGradient></defs>
+<rect width="400" height="240" fill="url(#g)"/>
+<g fill="var(--fill)" stroke="var(--ln)" stroke-width="3" stroke-linejoin="round"><path d="M78 118L200 52l122 66v10H78z"/><rect x="96" y="128" width="208" height="58" rx="6"/></g>
+<g fill="var(--a)"><circle cx="138" cy="158" r="12"/><circle cx="169" cy="158" r="12" opacity=".8"/><circle cx="200" cy="158" r="12"/><circle cx="231" cy="158" r="12" opacity=".8"/><circle cx="262" cy="158" r="12"/></g>
+<path d="M200 52V34m0 0h26l-6 8 6 8h-26" fill="none" stroke="var(--a)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
