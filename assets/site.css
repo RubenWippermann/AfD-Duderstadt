@@ -468,13 +468,18 @@ footer.site-footer .foot-bottom a:hover { color: var(--afd-blue-dark); }
 .cc-actions [data-cc="reject"] { background: var(--bg-alt); color: var(--ink); }
 .cc-actions [data-cc="reject"]:hover { background: var(--line); }
 
-/* ---- Anzeigenblock (nur nach Marketing-Einwilligung sichtbar) ---- */
+/* ---- Anzeigenplätze (Höhe reserviert, damit nichts springt) ----
+   Die Plätze sind per hidden ausgeblendet, bis ads-config.js/consent.js sie freigeben.
+   Modus 'tcf': ads-config.js setzt html[data-ads-<position>] schon vor dem ersten Zeichnen,
+   dann steht die Höhe von Anfang an. Modus 'eigen': Freigabe erst nach der Wahl im Banner. */
 .ad-slot {
   max-width: var(--maxw); margin: 0 auto; padding: 0 20px 40px;
-  opacity: 0; height: 0; overflow: hidden; transition: opacity 0.3s var(--ease);
 }
-.ad-slot.consented { opacity: 1; height: auto; overflow: visible; }
-.ad-slot ins.adsbygoogle { max-height: 360px; overflow: hidden; }
+html[data-ads-oben] .ad-slot[data-ad-position="oben"][hidden],
+html[data-ads-unten] .ad-slot[data-ad-position="unten"][hidden] { display: block; }
+.ad-slot ins.adsbygoogle { display: block; height: 280px; overflow: hidden; }
+html[data-ads-oben] .ad-slot[data-ad-position="oben"]:not(:has(ins)),
+html[data-ads-unten] .ad-slot[data-ad-position="unten"]:not(:has(ins)) { min-height: 344px; }
 .ad-slot ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
 .ad-slot:has(ins.adsbygoogle[data-ad-status="unfilled"]) { display: none; }
 .ad-slot .ad-label {
