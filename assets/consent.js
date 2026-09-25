@@ -1,17 +1,21 @@
 /* afd-duderstadt.de — Cookie-Consent und Werbung (Google AdSense).
-   Alle Werbewerte stehen in assets/ads-config.js (einzige Konfigurationsstelle).
-   Modus 'eigen': Werbeskripte laden erst NACH ausdrücklicher Einwilligung im eigenen Banner.
-   Modus 'tcf':   Google Funding Choices (TCF v2.2) übernimmt die Einwilligung, das eigene Banner bleibt aus.
-   Speicherung im Modus 'eigen': localStorage + 1st-party-Cookie (12 Monate). */
+   Alle Werbewerte und der Tag der Google-Einwilligungsmeldung stehen in assets/ads-config.js.
+   Ohne CONSENT_TAG: eigenes Banner, Werbeskripte laden erst NACH ausdrücklicher Einwilligung.
+   Mit CONSENT_TAG (html[data-cmp="google"]): Google fragt und speichert (TCF v2.2); Werbung erst,
+   wenn der TCF-String Zweck 1 und den Anbieter Google (ID 755) bestätigt. Das eigene Banner ist dann
+   nur Rückfall, wenn window.__tcfapi nach 4 s fehlt (z. B. Werbeblocker).
+   Speicherung des eigenen Banners: localStorage + 1st-party-Cookie (12 Monate). */
 (function () {
   'use strict';
 
   var CFG = window.AFD_ADS || {};
   var KEY = 'afd-consent';          // 'accept' | 'reject'
+  var VORAB = 'afd-ads-vorab';      // '1' = Werbung war zugestimmt (nur für die Höhenreservierung)
   var MAXAGE = 60 * 60 * 24 * 365;  // 12 Monate
+  var GOOGLE_VENDOR = 755;
 
   var CLIENT_OK = /^ca-pub-\d{16}$/.test(CFG.CLIENT || '');
-  var TCF = CFG.MODUS === 'tcf' && CLIENT_OK;
+  var cmpGoogle = document.documentElement.getAttribute('data-cmp') === 'google';
 
   function slotId(pos) {
     var s = (CFG.SLOTS || {})[pos];
@@ -28,6 +32,10 @@
     try { localStorage.setItem(KEY, v); } catch (e) {}
     document.cookie = 'afd_consent=' + encodeURIComponent(v) + ';max-age=' + MAXAGE +
       ';path=/;samesite=lax';
+  }
+
+  function vorab(an) {
+    try { if (an) localStorage.setItem(VORAB, '1'); else localStorage.removeItem(VORAB); } catch (e) {}
   }
 
   var banner = document.querySelector('[data-cc-banner]');
@@ -65,13 +73,36 @@
     document.head.appendChild(s);
   }
 
-  /* Modus 'tcf': Funding-Choices-Skript plus Signal-Iframe (Googles Standardeinbindung). */
-  function ladeFundingChoices() {
-    if (document.querySelector('script[src*="fundingchoicesmessages.google.com/i/"]')) return;
-    var s = document.createElement('script');
-    s.async = true;
-    s.src = 'https://fundingchoicesmessages.google.com/i/' + encodeURIComponent(CFG.CLIENT.replace(/^ca-/, '')) + '?ers=1';
-    document.head.appendChild(s);
+  function enableMarketing() {
+    document.documentElement.setAttribute('data-consent', 'marketing');
+    if (renderSlots()) loadSdk();
+  }
+
+  function apply(v) {
+    if (v === 'accept') enableMarketing();
+    else document.documentElement.setAttribute('data-consent', 'essential');
+  }
+
+  function choose(v) { set(v); apply(v); closeBanner(); }
+
+  function bindBanner() {
+    if (!banner) return;
+    var a = banner.querySelector('[data-cc="accept"]');
+    var r = banner.querySelector('[data-cc="reject"]');
+    if (a) a.addEventListener('click', function () { choose('accept'); });
+    if (r) r.addEventListener('click', function () { choose('reject'); });
+  }
+
+  /* Googles Meldung laden: nur die geprüften Skript-Adressen aus ads-config.js (Host-Wächter dort),
+     dazu das Signal-Iframe, das Googles Meldung erwartet. */
+  function ladeGoogleMeldung() {
+    (CFG.cmpSrcs || []).forEach(function (src) {
+      if (document.querySelector('script[src="' + src.replace(/"/g, '') + '"]')) return;
+      var s = document.createElement('script');
+      s.async = true;
+      s.src = src;
+      document.head.appendChild(s);
+    });
     (function signal() {
       if (window.frames['googlefcPresent']) return;
       if (document.body) {
@@ -85,43 +116,58 @@
     })();
   }
 
-  function zeigeWerbung() {
-    document.documentElement.setAttribute('data-consent', 'marketing');
-    if (renderSlots()) loadSdk();
+  function tcfGranted(d) {
+    if (d && d.gdprApplies === false) return true;
+    return !!(d && d.purpose && d.purpose.consents && d.purpose.consents[1] &&
+      d.vendor && d.vendor.consents && d.vendor.consents[GOOGLE_VENDOR]);
   }
 
-  function apply(v) {
-    if (v === 'accept') zeigeWerbung();
-    else document.documentElement.setAttribute('data-consent', 'essential');
+  function bootGoogle() {
+    ladeGoogleMeldung();
+    var t0 = Date.now(), done = false;
+    function rueckfall() {
+      if (done) return;
+      done = true;
+      var cur = get();
+      if (cur === 'accept' || cur === 'reject') apply(cur); else openBanner();
+    }
+    (function warte() {
+      if (typeof window.__tcfapi === 'function') {
+        done = true;
+        window.__tcfapi('addEventListener', 2, function (d, ok) {
+          if (!ok || !d) return;
+          if (d.eventStatus === 'tcloaded' || d.eventStatus === 'useractioncomplete') {
+            if (tcfGranted(d)) { vorab(true); enableMarketing(); }
+            else { vorab(false); document.documentElement.setAttribute('data-consent', 'essential'); }
+          }
+        });
+      } else if (Date.now() - t0 > 4000) rueckfall();
+      else setTimeout(warte, 200);
+    })();
+    Array.prototype.forEach.call(document.querySelectorAll('[data-cookie-settings]'), function (b) {
+      b.addEventListener('click', function (e) {
+        e.preventDefault();
+        if (window.googlefc && window.googlefc.callbackQueue) {
+          window.googlefc.callbackQueue.push({ CONSENT_API_READY: function () {
+            if (typeof window.googlefc.showRevocationMessage === 'function') window.googlefc.showRevocationMessage();
+          } });
+        } else openBanner();
+      });
+    });
+    bindBanner();
   }
-
-  function choose(v) { set(v); apply(v); closeBanner(); }
 
   function boot() {
-    if (TCF) {
+    if (cmpGoogle) {
       window.googlefc = window.googlefc || {};
       window.googlefc.callbackQueue = window.googlefc.callbackQueue || [];
-      Array.prototype.forEach.call(document.querySelectorAll('[data-cookie-settings]'), function (b) {
-        b.addEventListener('click', function (e) {
-          e.preventDefault();
-          window.googlefc.callbackQueue.push({ CONSENT_API_READY: function () { window.googlefc.showRevocationMessage(); } });
-        });
-      });
-      ladeFundingChoices();
-      zeigeWerbung();
+      bootGoogle();
       return;
     }
-
-    if (banner) {
-      var a = banner.querySelector('[data-cc="accept"]');
-      var r = banner.querySelector('[data-cc="reject"]');
-      if (a) a.addEventListener('click', function () { choose('accept'); });
-      if (r) r.addEventListener('click', function () { choose('reject'); });
-    }
+    bindBanner();
     Array.prototype.forEach.call(document.querySelectorAll('[data-cookie-settings]'), function (b) {
       b.addEventListener('click', function (e) { e.preventDefault(); openBanner(); });
     });
-
     var cur = get();
     if (cur === 'accept' || cur === 'reject') { apply(cur); }
     else { openBanner(); }
