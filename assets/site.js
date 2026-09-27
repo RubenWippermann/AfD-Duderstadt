@@ -1,5 +1,7 @@
 /* afd-duderstadt.de — Bewegung: Scroll-Reveal (260 ms) und Hero-Video.
    Ohne JavaScript oder bei "Bewegung reduzieren" bleibt alles sichtbar (Poster statt Video). */
+document.documentElement.classList.add('js');
+
 (function () {
   'use strict';
   var reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
