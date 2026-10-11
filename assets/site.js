@@ -21,6 +21,34 @@ document.documentElement.classList.add('js');
     }
   }
 
+  /* FX: Lesefortschritt, Kopfzeilen-Schatten, Glanz folgt dem Zeiger auf Karten (nur ohne reduzierte Bewegung) */
+  if (!reduced) {
+    var bar = document.createElement('div');
+    bar.className = 'fx-progress';
+    bar.setAttribute('aria-hidden', 'true');
+    document.body.appendChild(bar);
+    var tick = false, hdr = document.querySelector('header.site-header, .site-header, body > header');
+    window.addEventListener('scroll', function () {
+      if (tick) return;
+      tick = true;
+      requestAnimationFrame(function () {
+        var max = document.documentElement.scrollHeight - window.innerHeight;
+        bar.style.transform = 'scaleX(' + (max > 0 ? Math.min(1, window.scrollY / max) : 0) + ')';
+        if (hdr) hdr.classList.toggle('fx-scrolled', window.scrollY > 8);
+        tick = false;
+      });
+    }, { passive: true });
+    if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+      document.addEventListener('pointermove', function (e) {
+        var c = e.target.closest && e.target.closest('.party-card, .teaser-card, .reason-row, .shop-box');
+        if (!c) return;
+        var r = c.getBoundingClientRect();
+        c.style.setProperty('--mx', (e.clientX - r.left) + 'px');
+        c.style.setProperty('--my', (e.clientY - r.top) + 'px');
+      }, { passive: true });
+    }
+  }
+
   /* Scroll-Reveal: Karten, Reihen, Abschnittsköpfe blenden beim Einscrollen ein */
   var sel = '.reveal, .section-head, .reason-row, .party-card, .teaser-card, .place-chip, .shop-box';
   var els = Array.prototype.slice.call(document.querySelectorAll(sel));
