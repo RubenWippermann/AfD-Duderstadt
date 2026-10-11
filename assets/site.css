@@ -599,11 +599,11 @@ header.hero .inner > *:nth-child(3) { animation-delay: 160ms; }
 
 /* FX-Ebene: Lesefortschritt, Kopfzeile, Karten-Glanz. Nur Deckkraft/transform, kein Layoutsprung. */
 .fx-progress{position:fixed;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,#00688f,#29b6e8);transform:scaleX(0);transform-origin:0 50%;z-index:1000;pointer-events:none}
-.site-header{transition:box-shadow .25s ease}
-.site-header.fx-scrolled{box-shadow:0 4px 18px rgba(0,0,0,.14)}
+.topnav{transition:box-shadow .25s ease}
+.topnav.fx-scrolled{box-shadow:0 4px 18px rgba(0,0,0,.14)}
 @media (hover:hover) and (pointer:fine){
  .party-card,.teaser-card,.reason-row,.shop-box{position:relative;overflow:hidden}
  .party-card::after,.teaser-card::after,.reason-row::after,.shop-box::after{content:"";position:absolute;inset:0;pointer-events:none;opacity:0;transition:opacity .25s ease;background:radial-gradient(260px circle at var(--mx,50%) var(--my,50%),rgba(41,182,232,.16),transparent 70%)}
  .party-card:hover::after,.teaser-card:hover::after,.reason-row:hover::after,.shop-box:hover::after{opacity:1}
 }
-@media (prefers-reduced-motion:reduce){.fx-progress{display:none}.site-header{transition:none}}
+@media (prefers-reduced-motion:reduce){.fx-progress{display:none}.topnav{transition:none}}

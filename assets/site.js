@@ -27,7 +27,7 @@ document.documentElement.classList.add('js');
     bar.className = 'fx-progress';
     bar.setAttribute('aria-hidden', 'true');
     document.body.appendChild(bar);
-    var tick = false, hdr = document.querySelector('header.site-header, .site-header, body > header');
+    var tick = false, hdr = document.querySelector('nav.topnav');
     window.addEventListener('scroll', function () {
       if (tick) return;
       tick = true;
