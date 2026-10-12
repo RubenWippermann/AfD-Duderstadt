@@ -140,7 +140,10 @@
       if (wurzel && wurzel.children.length > 0 && hinweis) { hinweis.remove(); }
     });
     var ziel = document.getElementById('pepa-shop');
+    if (ziel) { ziel.style.minHeight = '100vh'; } // Platz reservieren: Footer bleibt unter dem Bildschirmrand, bis der Shop rendert
     if (ziel) { beobachter.observe(ziel, { childList: true, subtree: true }); }
+    // Platzhalter-Höhe nach 10 s nur freigeben, wenn der Shop gar nicht geladen hat (sonst bleibt sie, damit der Footer nicht springt)
+    setTimeout(function () { if (ziel && ziel.children.length === 0) { ziel.style.minHeight = ''; } }, 10000);
   </script>
 </main>
 
