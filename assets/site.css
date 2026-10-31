@@ -469,54 +469,6 @@ footer.site-footer .foot-bottom a:hover { color: var(--afd-blue-dark); }
   font-size: 0.78rem; color: var(--sub-2);
 }
 
-/* ---- Cookie-Consent-Banner ---- */
-.cc-banner {
-  position: fixed; left: 0; right: 0; bottom: 0; z-index: 500;
-  background: #fff; border-top: 1px solid var(--line);
-  box-shadow: 0 -8px 32px rgba(0,0,0,0.08);
-  padding: 20px; display: flex; flex-wrap: wrap; align-items: center;
-  justify-content: center; gap: 16px 24px;
-}
-.cc-banner[hidden] { display: none; }
-.cc-banner p {
-  margin: 0; font-size: 0.85rem; line-height: 1.6; color: var(--sub);
-  max-width: 560px; flex: 1 1 320px;
-}
-.cc-banner p a { color: var(--afd-blue-dark); text-decoration: underline; }
-.cc-actions { display: flex; gap: 10px; flex-wrap: wrap; }
-.cc-actions button {
-  border: none; border-radius: var(--radius-md); padding: 10px 20px;
-  font-size: 0.85rem; font-weight: 600; cursor: pointer;
-  transition: background 0.2s var(--ease), transform 0.2s var(--ease);
-}
-.cc-actions button:active { transform: scale(0.97); }
-.cc-actions [data-cc="accept"] { background: var(--afd-blue-dark); color: #fff; }
-.cc-actions [data-cc="accept"]:hover { background: #00688f; }
-.cc-actions [data-cc="reject"] { background: var(--bg-alt); color: var(--ink); }
-.cc-actions [data-cc="reject"]:hover { background: var(--line); }
-
-/* ---- Anzeigenplätze (Höhe reserviert, damit nichts springt) ----
-   Die Plätze sind per hidden ausgeblendet, bis ads-config.js/consent.js sie freigeben.
-   Modus 'tcf': ads-config.js setzt html[data-ads-<position>] schon vor dem ersten Zeichnen,
-   dann steht die Höhe von Anfang an. Modus 'eigen': Freigabe erst nach der Wahl im Banner. */
-.ad-slot {
-  max-width: var(--maxw); margin: 0 auto; padding: 0 20px 40px;
-}
-html[data-ads-oben] .ad-slot[data-ad-position="oben"][hidden],
-html[data-ads-unten] .ad-slot[data-ad-position="unten"][hidden] { display: block; }
-.ad-slot ins.adsbygoogle { display: block; height: 280px; overflow: hidden; }
-html[data-ads-oben] .ad-slot[data-ad-position="oben"]:not(:has(ins)),
-html[data-ads-unten] .ad-slot[data-ad-position="unten"]:not(:has(ins)) { min-height: 345px; }
-.ad-slot ins.adsbygoogle[data-ad-status="unfilled"] { display: none !important; }
-.ad-slot:has(ins.adsbygoogle[data-ad-status="unfilled"]) { display: none; }
-.ad-slot .ad-label {
-  display: block; font-size: 0.7rem; letter-spacing: 0.04em; text-transform: uppercase;
-  color: var(--sub-2); margin-bottom: 6px; text-align: center;
-}
-
-/* Absatz zur Google-Einwilligungsmeldung (Datenschutzerklärung): nur sichtbar, wenn ads-config.js CONSENT_TAG gesetzt ist */
-html[data-cmp="google"] .nur-google-cmp[hidden] { display: block; }
-html[data-cmp="google"] .nur-eigen { display: none; }
 
 /* ---- Scroll-Reveal ---- */
 /* Nur mit JavaScript (html.js): ohne Skript bleibt alles sofort sichtbar */
@@ -551,9 +503,9 @@ html[data-cmp="google"] .nur-eigen { display: none; }
   }
   nav.topnav { background: rgba(0,0,0,0.72); }
   .mobile-menu { background: rgba(0,0,0,0.98); }
-  .pill.primary, .cc-actions [data-cc="accept"] { background: #0077a8; color: #fff; }
+  .pill.primary { background: #0077a8; color: #fff; }
   .reason-row:hover .reason-num { background: #0077a8; color: #fff; }
-  .party-card, .place-chip, .teaser-card, .cc-banner { background: var(--bg-alt); }
+  .party-card, .place-chip, .teaser-card { background: var(--bg-alt); }
   .shop-box .placeholder-note { background: #2b2410; border-color: #a68400; }
   .shop-box { background: linear-gradient(135deg, #0a1e29, #000000); }
   .skip-link { background: #f5f5f7; color: #000; }
@@ -566,8 +518,6 @@ html[data-cmp="google"] .nur-eigen { display: none; }
 @media (max-width: 640px) {
   footer.site-footer .foot-col a { padding: 13px 0; }
   footer.site-footer .foot-bottom a { display: inline-block; padding: 12px 0; }
-  .cc-actions button { min-height: 44px; }
-  .cc-banner p a { display: inline-block; padding: 10px 0; }
   .party-card a.btn { min-height: 44px; display: inline-flex; align-items: center; }
 }
 
@@ -581,9 +531,6 @@ html[data-cmp="google"] .nur-eigen { display: none; }
 .teaser-card:hover .teaser-link { text-decoration: underline; text-underline-offset: 3px; }
 @media (hover: hover) { .teaser-card:hover, .party-card:hover { transform: translateY(-6px); } }
 .party-card, .teaser-card { will-change: transform; }
-/* Anzeigenplätze: gleiche Bildsprache wie Karten, Höhe bleibt reserviert (kein Sprung) */
-.ad-slot:not([hidden]) .ad-label { margin-bottom: 8px; }
-.ad-slot ins.adsbygoogle { border-radius: var(--radius-md); background: var(--bg-alt); }
 .section-head .kicker { text-transform: none; }
 
 /* Hero-Bewegung ohne Video: langsamer Kamerazug über das Poster, Text steigt sanft ein */
