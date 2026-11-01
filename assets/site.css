@@ -554,3 +554,9 @@ header.hero .inner > *:nth-child(3) { animation-delay: 160ms; }
  .party-card:hover::after,.teaser-card:hover::after,.reason-row:hover::after,.shop-box:hover::after{opacity:1}
 }
 @media (prefers-reduced-motion:reduce){.fx-progress{display:none}.topnav{transition:none}}
+
+/* Hintergrund-Artikel */
+.artikel{max-width:720px;margin:0 auto}
+.artikel h2{margin:1.6em 0 .5em}
+.artikel p{line-height:1.7;margin:0 0 1em}
+.src-list{margin:0 0 1em;padding-left:1.2em;line-height:1.6}
