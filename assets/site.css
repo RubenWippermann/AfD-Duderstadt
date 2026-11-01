@@ -570,3 +570,9 @@ header.hero .inner > *:nth-child(3) { animation-delay: 160ms; }
 .shop-hinweis p{margin:0 0 .8em;line-height:1.6}
 .shop-hinweis ul{list-style:none;margin:0 0 1em;padding:0;display:flex;flex-direction:column;gap:6px}
 .shop-hinweis .werbe-hinweis{font-size:.875rem;margin:.8em 0 0}
+
+/* Lange Artikel auf dem Handy: Nummer über dem Text, Text in voller Breite */
+@media (max-width: 600px) {
+  .reasons-stack .reason-row { grid-template-columns: 1fr; gap: 10px; }
+  .reasons-stack .reason-num { justify-self: start; }
+}
