@@ -283,6 +283,8 @@ main section.tinted { background: var(--bg-alt); }
   align-items: start;
 }
 .reason-row:last-child { border-bottom: 1px solid var(--line); }
+/* Hub-Zeilen ohne Nummernfeld: Inhalt nutzt die volle Breite (sonst in 64 px gequetscht) */
+.reason-row > div:only-child { grid-column: 1 / -1; min-width: 0; }
 .reason-num {
   width: 44px; height: 44px;
   border-radius: 50%;
