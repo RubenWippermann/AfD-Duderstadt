@@ -1,6 +1,6 @@
 # afd-duderstadt.de
 
-> Private Website (kein Angebot und kein Zusammenhang mit der AfD) zur AfD und zur demokratischen Kommunalpolitik in Duderstadt, mit Quellenangaben.
+> Unabhängige Website (kein Angebot und kein Zusammenhang mit der AfD) zur AfD und zur demokratischen Kommunalpolitik in Duderstadt, mit Quellenangaben.
 
 ## Seiten
 - [Startseite](https://afd-duderstadt.de/): Überblick, lokaler Bezug (Stadtratswahl 2021, Wahl 2026)
