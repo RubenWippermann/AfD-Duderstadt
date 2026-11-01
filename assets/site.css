@@ -560,3 +560,11 @@ header.hero .inner > *:nth-child(3) { animation-delay: 160ms; }
 .artikel h2{margin:1.6em 0 .5em}
 .artikel p{line-height:1.7;margin:0 0 1em}
 .src-list{margin:0 0 1em;padding-left:1.2em;line-height:1.6}
+
+/* Shop-Hinweis (Werbung der Personal Paramedic e.K.) */
+.shop-hinweis-wrap{padding:8px 0 40px}
+.shop-hinweis{max-width:720px;margin:0 auto;padding:24px 28px;border:1px solid var(--line);border-radius:12px;text-align:center}
+.shop-hinweis h2{margin:.2em 0 .4em}
+.shop-hinweis p{margin:0 0 .8em;line-height:1.6}
+.shop-hinweis ul{list-style:none;margin:0 0 1em;padding:0;display:flex;flex-direction:column;gap:6px}
+.shop-hinweis .werbe-hinweis{font-size:.875rem;margin:.8em 0 0}
