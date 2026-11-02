@@ -580,7 +580,7 @@ header.hero .inner > *:nth-child(3) { animation-delay: 160ms; }
 /* ======================================================================
    Gestaltungs-Durchgang 02.11.2026 (apple-design): ein Raster, ein Rhythmus,
    ein Erkennungszeichen. Nur Darstellung, keine Textänderung. Farben über Variablen.
-   Erkennungszeichen: das rote Kreuz aus dem Logo "afd✕duderstadt" als Abschnitts-Marke.
+   Erkennungszeichen: kurzer Strich in der Akzentfarbe über jeder Abschnittsüberschrift.
    ====================================================================== */
 :root {
   --measure: 68ch;          /* Lesebreite für Fließtext */
@@ -603,10 +603,8 @@ main section, main .band { padding-top: var(--space-section); padding-bottom: va
   content: ""; width: 18px; height: 1.5px; background: var(--line); border-radius: 1px;
 }
 .section-head::before {
-  content: ""; display: block; width: 14px; height: 14px; margin: 0 auto 14px;
-  background:
-    linear-gradient(45deg, transparent calc(50% - 1.25px), var(--alarm-red) calc(50% - 1.25px) calc(50% + 1.25px), transparent calc(50% + 1.25px)),
-    linear-gradient(-45deg, transparent calc(50% - 1.25px), var(--alarm-red) calc(50% - 1.25px) calc(50% + 1.25px), transparent calc(50% + 1.25px));
+  content: ""; display: block; width: 28px; height: 3px; margin: 0 auto 16px;
+  border-radius: 2px; background: var(--afd-blue-dark);
 }
 .section-head h1 { font-size: clamp(2rem, 4.6vw, 3.1rem); line-height: 1.1; max-width: 22ch; margin-left: auto; margin-right: auto; }
 .section-head h2 { font-size: clamp(1.9rem, 4.2vw, 2.9rem); }
