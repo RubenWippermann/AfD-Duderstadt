@@ -654,3 +654,10 @@ footer.site-footer .foot-bottom { justify-content: center; text-align: center; }
   .reason-row:has(> .reason-num)::before { left: 17.25px; }
 }
 footer.site-footer .foot-bottom { flex-direction: column; align-items: center; gap: 2px; }
+
+/* Lenis (sanftes Scrollen), Grundregeln aus lenis.css 1.3.27 */
+html.lenis, html.lenis body { height: auto; }
+.lenis:not(.lenis-autoToggle).lenis-stopped { overflow: clip; }
+.lenis [data-lenis-prevent] { overscroll-behavior: contain; }
+.lenis.lenis-smooth iframe { pointer-events: none; }
+.lenis.lenis-smooth { scroll-behavior: auto !important; }  /* site.css setzt html { scroll-behavior: smooth }: sonst doppelt geglättet */
