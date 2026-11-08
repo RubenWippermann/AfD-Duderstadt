@@ -661,3 +661,20 @@ html.lenis, html.lenis body { height: auto; }
 .lenis [data-lenis-prevent] { overscroll-behavior: contain; }
 .lenis.lenis-smooth iframe { pointer-events: none; }
 .lenis.lenis-smooth { scroll-behavior: auto !important; }  /* site.css setzt html { scroll-behavior: smooth }: sonst doppelt geglättet */
+
+/* ---- Kontaktformular (kontakt.html) ---- */
+.kontaktformular { display: grid; gap: 10px; max-width: 560px; margin: 16px 0 8px; }
+.kontaktformular label { font-weight: 600; font-size: 0.92rem; }
+.kontaktformular input, .kontaktformular textarea {
+  font: inherit; color: var(--ink); background: var(--bg); border: 1.5px solid var(--sub);
+  border-radius: var(--radius-md); padding: 12px 14px; min-height: 44px; width: 100%;
+}
+.kontaktformular textarea { resize: vertical; }
+.kontaktformular input:focus-visible, .kontaktformular textarea:focus-visible { outline: 2px solid var(--afd-blue-dark); outline-offset: 2px; }
+.kontaktformular button[type="submit"] { justify-self: start; border: 0; cursor: pointer; min-height: 44px; font: inherit; font-weight: 600; }
+.kontaktformular button[disabled] { opacity: 0.6; cursor: progress; }
+.kontaktformular .kf-hinweis, .kontaktformular .kf-datenschutz { margin: 0; font-size: 0.88rem; color: var(--sub); }
+.kontaktformular .kf-falle { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+.kontaktformular .kf-status { margin: 0; padding: 12px 14px; border-radius: var(--radius-md); border: 1.5px solid var(--sub); }
+.kontaktformular .kf-status[data-state="ok"] { border-color: var(--afd-blue-dark); }
+.kontaktformular .kf-status[data-state="fehler"] { border-color: var(--alarm-red); }

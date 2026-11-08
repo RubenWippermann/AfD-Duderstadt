@@ -74,8 +74,20 @@
       <article class="artikel">
         <h2>Erreichbarkeit</h2>
         <p>Diese Website hat nichts mit der AfD zu tun. Du erreichst den Betreiber (siehe Impressum) per E-Mail unter <a href="mailto:kontakt@ruben-wippermann.de">kontakt@ruben-wippermann.de</a> oder per Post an die Anschrift im <a href="impressum.html">Impressum</a>. Eine Telefonnummer gibt es nicht.</p>
-        <!-- Kontaktformular (Wortlaut Jurist 08.11., noch nicht aktiv): Hinweis vor dem Absenden: "Wir verwenden deine Angaben nur zur Beantwortung deiner Anfrage (Art. 6 Abs. 1 lit. b/f DSGVO); Details in der Datenschutzerklärung." Das Formular braucht ein Backend (Mailversand an kontakt@ruben-wippermann.de); dafür ist eine Entscheidung nötig. Den Satz "Eine Telefonnummer gibt es nicht." erst ändern, wenn der zweite Weg steht. -->
-<h2>Fehler und Korrekturen</h2>
+        <h2 id="formular">Kontaktformular</h2>
+        <form class="kontaktformular" data-kontaktformular data-endpoint="" novalidate>
+          <p class="kf-hinweis">Alternativ schreibst du uns eine E-Mail. Wir antworten in der Regel innerhalb von 2 Werktagen.</p>
+          <label for="kf-email">Deine E-Mail-Adresse</label>
+          <input id="kf-email" name="email" type="email" autocomplete="email" required maxlength="200">
+          <label for="kf-nachricht">Deine Nachricht</label>
+          <textarea id="kf-nachricht" name="nachricht" rows="6" required minlength="10" maxlength="3000"></textarea>
+          <div class="kf-falle" aria-hidden="true"><label for="kf-website">Bitte leer lassen</label><input id="kf-website" name="website" type="text" tabindex="-1" autocomplete="off"></div>
+          <p class="kf-datenschutz">Wir verwenden deine Angaben nur zur Beantwortung deiner Anfrage (Art. 6 Abs. 1 lit. b/f DSGVO); Details in der <a href="datenschutz.html">Datenschutzerklärung</a>.</p>
+          <button type="submit" class="pill primary">Nachricht senden</button>
+          <p class="kf-status" data-status role="status" aria-live="polite" hidden></p>
+          <noscript><p class="kf-status">Für das Formular wird JavaScript benötigt. Bitte schreib uns direkt per E-Mail.</p></noscript>
+        </form>
+        <h2>Fehler und Korrekturen</h2>
         <p>Tatsachen auf dieser Seite sind mit Quellen belegt. Wenn eine Angabe nicht mehr stimmt oder eine Quelle nicht mehr erreichbar ist, schreib bitte eine E-Mail mit der Seite, der Textstelle und, wenn möglich, einem Link auf die richtige Fundstelle. Hinweise werden geprüft und, wenn belegt, eingearbeitet.</p>
         <h2>Fragen zu Inhalten, Shop und Datenschutz</h2>
         <p>Fragen zu den Texten stellst du ebenfalls per E-Mail. Für den Shop gelten die Angaben im <a href="impressum.html#agb">Impressum (AGB und Widerruf)</a>, für den Umgang mit Daten die <a href="datenschutz.html">Datenschutzerklärung</a>.</p>
@@ -123,5 +135,6 @@
 
 
 <script src="assets/site.js" defer></script>
+<script src="assets/kontakt.js" defer></script>
 </body>
 </html>
