@@ -23,6 +23,7 @@
     }
     if (!form.checkValidity()) { form.reportValidity(); return; }
     var data = {
+      name: form.elements.name.value.trim(),
       email: form.elements.email.value.trim(),
       nachricht: form.elements.nachricht.value.trim(),
       website: form.elements.website.value

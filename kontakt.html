@@ -77,13 +77,16 @@
         <h2 id="formular">Kontaktformular</h2>
         <form class="kontaktformular" data-kontaktformular data-endpoint="" novalidate>
           <p class="kf-hinweis">Alternativ schreibst du uns eine E-Mail. Wir antworten in der Regel innerhalb von 2 Werktagen.</p>
-          <label for="kf-email">Deine E-Mail-Adresse</label>
+          <label for="kf-name">Dein Name (freiwillig)</label>
+          <input id="kf-name" name="name" type="text" autocomplete="name" maxlength="120">
+          <label for="kf-email">Deine E-Mail-Adresse (Pflichtfeld)</label>
           <input id="kf-email" name="email" type="email" autocomplete="email" required maxlength="200">
-          <label for="kf-nachricht">Deine Nachricht</label>
+          <label for="kf-nachricht">Deine Nachricht (Pflichtfeld)</label>
           <textarea id="kf-nachricht" name="nachricht" rows="6" required minlength="10" maxlength="3000"></textarea>
           <div class="kf-falle" aria-hidden="true"><label for="kf-website">Bitte leer lassen</label><input id="kf-website" name="website" type="text" tabindex="-1" autocomplete="off"></div>
-          <p class="kf-datenschutz">Wir verwenden deine Angaben nur zur Beantwortung deiner Anfrage (Art. 6 Abs. 1 lit. b/f DSGVO); Details in der <a href="datenschutz.html">Datenschutzerklärung</a>.</p>
           <button type="submit" class="pill primary">Nachricht senden</button>
+          <p class="kf-datenschutz">Wir verwenden deine Angaben nur, um deine Anfrage zu beantworten (Art. 6 Abs. 1 lit. f DSGVO). Mehr dazu in der <a href="datenschutz.html#kontakt">Datenschutzerklärung</a>. Bitte keine sensiblen Angaben wie Gesundheit oder politische Meinung eintragen.</p>
+          
           <p class="kf-status" data-status role="status" aria-live="polite" hidden></p>
           <noscript><p class="kf-status">Für das Formular wird JavaScript benötigt. Bitte schreib uns direkt per E-Mail.</p></noscript>
         </form>
