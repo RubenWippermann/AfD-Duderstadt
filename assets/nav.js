@@ -30,5 +30,5 @@ document.addEventListener('DOMContentLoaded', function () {
   menu.querySelectorAll('a').forEach(function (a) { a.addEventListener('click', close); });
   document.addEventListener('keydown', function (e) { if (e.key === 'Escape') close(); });
   // Overlay schließt sich auch, wenn der Bildschirm wieder breiter wird (z. B. Tablet-Rotation)
-  window.addEventListener('resize', function () { if (window.innerWidth > 640) close(); });
+  window.addEventListener('resize', function () { if (window.innerWidth > 820) close(); });
 });
