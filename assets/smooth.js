@@ -2,6 +2,7 @@
    Nur Desktop mit Maus; nativ bei Touch, reduzierter Bewegung, Datensparmodus. Ohne JS bleibt alles nativ und vollständig lesbar. */
 (function () {
   "use strict";
+  var self = document.currentScript && document.currentScript.src;   // Pfad relativ zu dieser Datei: gilt auf Unterseiten gleich
   var mm = window.matchMedia;
   if (!mm) return;
   if (mm("(prefers-reduced-motion: reduce)").matches) return;
@@ -10,7 +11,7 @@
   if (cx && (cx.saveData || /(^|-)2g$/.test(cx.effectiveType || ""))) return;
   function start() {
     var s = document.createElement("script");
-    s.src = "assets/vendor/lenis-1.3.27.min.js";
+    s.src = self ? new URL("vendor/lenis-1.3.27.min.js", self).href : "/assets/vendor/lenis-1.3.27.min.js";
     s.async = true;
     s.onload = function () {
       var lenis = new window.Lenis({ lerp: 0.12, anchors: true });
