@@ -711,3 +711,8 @@ html.lenis, html.lenis body { height: auto; }
 /* Layout 18.11. (WM-Layout-Liste, nur Layout): Tippflaechen >= 44 px fuer Quellenlinks, Linklisten und den Button der Parteikarten */
 .reason-row .src a,.src-list a,.shop-hinweis p a{display:inline-block;padding:12px 0;min-height:44px;box-sizing:border-box}
 .party-card .btn{min-height:44px;display:flex;align-items:center;justify-content:center}
+/* Menue-Schliessen-Knopf: gezeichnetes Kreuz statt Textzeichen (gleiche Bedeutung, Beschriftung ueber aria-label) */
+.mobile-menu-close{font-size:0}
+.mobile-menu-close::before,.mobile-menu-close::after{content:"";position:absolute;left:50%;top:50%;width:22px;height:2px;background:currentColor;border-radius:1px}
+.mobile-menu-close::before{transform:translate(-50%,-50%) rotate(45deg)}
+.mobile-menu-close::after{transform:translate(-50%,-50%) rotate(-45deg)}
